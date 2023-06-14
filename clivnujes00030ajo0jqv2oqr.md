@@ -30,7 +30,7 @@ Content Projection or Dynamic Template Render? Let’s learn together about the 
 
 ## Dynamic Forms in 2023
 
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1686685887194/42651a1e-50c2-40ed-82a5-36440fc90ebf.jpeg align="center")
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1686747762345/c9f56ca6-ab95-43a5-8d58-e18acde3960b.jpeg align="center")
 
 [Mateo Tibaquira](https://twitter.com/MateoTP) | [Slides](https://docs.google.com/presentation/d/19vMRwlnwbZwl_d_d4NP0tMWvST_AtpbyvjxNxyYNrbQ/edit?usp=sharing)
 
