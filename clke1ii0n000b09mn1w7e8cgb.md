@@ -3,7 +3,7 @@ title: "TIL: nuggets from ng-conf 2023"
 datePublished: Sat Jul 22 2023 13:22:41 GMT+0000 (Coordinated Universal Time)
 cuid: clke1ii0n000b09mn1w7e8cgb
 slug: til-nuggets-from-ng-conf-2023
-cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1690032070612/d81dccda-9d0d-420e-b459-1f00279d4ef4.jpeg
+cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1693752684123/ba6b485f-d712-4926-a5ec-1f8fbf38954f.jpeg
 tags: ng-conf, angular, ngrx
 
 ---
