@@ -20,15 +20,17 @@ Here are some of the best shiny new things and innovations from ng-conf 2023, wh
 > 
 > As a result, we see a lot of potential in introducing an ergonomic, holistic approach to deferred loading in the core framework, that works across both client- and server-side rendering. This RFC proposes a new framework primitive: `{#defer}`.
 
-```typescript
+```xml
 {#defer on viewport}
-  </calendar>
+  <calendar/>
 {:loading}
    <loading/>
 {:error}
    Error while loading
 {/#defer}
 ```
+
+%[https://snappify.com/view/1552201b-4cb3-472c-9e0b-aebb564fe90d] 
 
 Links:
 
