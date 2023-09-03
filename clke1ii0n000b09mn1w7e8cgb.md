@@ -1,5 +1,6 @@
 ---
 title: "TIL: nuggets from ng-conf 2023"
+seoTitle: "TIL: ng-conf 2023 Key Nuggets"
 datePublished: Sat Jul 22 2023 13:22:41 GMT+0000 (Coordinated Universal Time)
 cuid: clke1ii0n000b09mn1w7e8cgb
 slug: til-nuggets-from-ng-conf-2023
@@ -29,8 +30,6 @@ Here are some of the best shiny new things and innovations from ng-conf 2023, wh
    Error while loading
 {/#defer}
 ```
-
-%[https://snappify.com/view/1552201b-4cb3-472c-9e0b-aebb564fe90d] 
 
 Links:
 
