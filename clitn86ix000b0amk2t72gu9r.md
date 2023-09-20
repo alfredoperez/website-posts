@@ -103,7 +103,7 @@ export interface ApiRequestMock {
 
 By using this and the interceptor, it was a breeze to setup the data to mock page states in the stories. As shown in the example below:
 
-```plaintext
+```typescript
 const Template: Story<LandingPageComponent> = args => ({ props: { ...args } });
 
 /**
@@ -147,7 +147,7 @@ WithData.decorators = [
          }
        }
       ...
-];   
+];
 ```
 
 # **Create Angular Components for Complex Stories**
@@ -156,7 +156,7 @@ Sometimes you cannot demo all the features of a component in a story by just cha
 
 The following shows the HTML of a story that demonstrates the behavior of an email field within a `FormControlGroup`:
 
-```plaintext
+```xml
 <story-demo-layout [demoWidth]="300" [width]="500">
   <story-demo-title>Email Field Within a Form</story-demo-title>
   
@@ -194,7 +194,7 @@ Now, let’s switch gears and talk about how to improve your developer experienc
 
 The first two things that come to mind, are the creation of helper methods and Cypress commands to make it faster to access stories.
 
-We were so inspired by some of the commands in [this repository](https://github.com/NicholasBoll/cypress-storybook). We decided to make our own version of the methods. Namely, the Cypress commands `visitStorybook` and `loadStory` to go to a specific story and the helper method `executeStoriesImageTests` to take screenshots of all the stories for a component.
+We were so inspired by some of the commands in [this repository](https://github.com/NicholasBoll/cypress-storybook). We decided to make our version of the methods. Namely, the Cypress commands `visitStorybook` and `loadStory` to go to a specific story and the helper method `executeStoriesImageTests` to take screenshots of all the stories for a component.
 
 Here is an example of how we use them:
 
@@ -233,9 +233,9 @@ As mentioned before, we created an interceptor to mock API responses for stories
 
 Visual regression tests are one of the most difficult obstacles to overcome. In essence, it appears simple; go to a specific URL for a story and take a screenshot. But it is more complicated than that because you must deal with different viewports and scrollbar types depending on the OS, or even if the components are not completely loaded or in the state you expected them to be at the same time.
 
-I could use a separate article to explore all the solutions / hacks we had to do to make this work, but here are my top 3 TL;DR recommendations:
+I could use a separate article to explore all the solutions/hacks we had to do to make this work, but here are my top 3 TL;DR recommendations:
 
-1. Use the same browser in your local and CI/CD environment.
+1. Use the same browser in your local and CI/CD environments.
     
 2. Create a helper function to use in Cypress to standardize viewports and any other setup you need before taking the screenshot.
     
