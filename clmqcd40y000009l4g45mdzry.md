@@ -18,7 +18,7 @@ When using [Prettier](https://prettier.io/), any HTML line that is longer than t
 
 Having a standard order for the HTML attributes can also help us quickly find out what the most important parts of an element are since we will be used to looking for attributes in the same order in every component.
 
-For this, we will use the plugin `prettier-plugin-organize-attributes` that, fortunately, helps us set the order for HTML attributes and also supports Vue, React and Angular.
+For this, we will use the plugin `prettier-plugin-organize-attributes` that, fortunately, helps us set the order for HTML attributes and also supports Vue, React, and Angular.
 
 ### Installing and configuring the library
 
@@ -153,7 +153,7 @@ Anything that can be modified with Angular using `[aria.`
 
 This includes standard element attributes, inputs, outputs, and DOM event handlers.
 
-This configuration makes sure that all the DOM Event handlers are grouped together in a logical way to make it easier to find counterparts, like for example, `(copy)`, `(cut)` and `(paste)` will be close together regardless of which other outputs exist.
+This configuration makes sure that all the DOM Event handlers are grouped in a logical way to make it easier to find counterparts, like, for example, `(copy)`, `(cut)` and `(paste)` will be close together regardless of which other outputs exist.
 
 #### DOM Event Handlers
 
@@ -161,8 +161,8 @@ Finally, include any DOM event handlers, such as `(mouseenter)`, `(copy)`, `(key
 
 ## Putting it all together
 
-Now, let's see how will this work if instead of relying on code reviews we could change it to use the library `prettier-plugin-organize-attributes`
+Now, let's see how this will work if, instead of relying on code reviews, we change it to use the library `prettier-plugin-organize-attributes`
 
-Let's give it a try in this component that has just way to many attributes but that can help us to see how the plugin works when the HTML element has a lot of different attribute types
+Let's give it a try in this component that has way to many attributes but that can help us see how the plugin works when the HTML element has a lot of different attribute types
 
 %[https://snappify.com/view/0e7dd090-f28c-41ec-b0f7-881e293ce30e]
