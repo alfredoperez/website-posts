@@ -18,7 +18,7 @@ When using [Prettier](https://prettier.io/), any HTML line that is longer than t
 
 Having a standard order for the HTML attributes can also help us quickly find out what the most important parts of an element are since we will be used to looking for attributes in the same order in every component.
 
-For this, we will use the plugin `prettier-plugin-organize-attributes` that, fortunately, helps us set the order for HTML attributes and also supports Vue, React, and Angular.
+For this, we will use the plugin`prettier-plugin-organize-attributes` that, fortunately, helps us set the order for HTML attributes and also supports Vue, React, and Angular.
 
 ### Installing and configuring the library
 
@@ -64,7 +64,7 @@ Let's break out why this order was chosen so you can rearrange and adapt as you 
 
 #### Invalid Attributes
 
-The first line `'^(id|name)$',` is to bring to the top any HTML attributes that you don't allow to make it easier to find them during code reviews, in this example, `id` and `name`.
+The first line`'^(id|name)$',` is to bring to the top any HTML attributes that you don't allow to make it easier to find them during code reviews; in this example, `id` and `name`.
 
 #### Directives
 
@@ -80,6 +80,8 @@ This includes any HTML attribute to select HTML elements while executing tests l
 
 #### HTML and Angular Accessibility Attributes
 
+The following will group everything related to accessibility
+
 ```json
  'tabindex',  
  '$ALT',  
@@ -87,13 +89,6 @@ This includes any HTML attribute to select HTML elements while executing tests l
  '$ROLE',  
  '$TYPE',
  '^\\[attr',
-```
-
-#### Angular Animations
-
-```json
- '$ANGULAR_ANIMATION',  
- '$ANGULAR_ANIMATION_INPUT',
 ```
 
 #### Stylistic Attributes
