@@ -64,43 +64,21 @@ Let's break out why this order was chosen so you can rearrange and adapt as you 
 
 #### Invalid Attributes
 
-```json
-'^(id|name)$',
-```
+The first line `'^(id|name)$',` is to bring to the top any HTML attributes that you don't allow to make it easier to find them during code reviews, in this example, `id` and `name`.
 
-The first line is to bring to the top any HTML attributes that you don't allow to make it easier to find them during code reviews.
+#### Directives
 
-#### Angular Structural Directives
+Since the directives also might change presentation is good to have them close to the first items to easily identify that the current HTML is affected by a directive.
 
-```JSON
-'$ANGULAR_STRUCTURAL_DIRECTIVE',
-```
+With the `'$ANGULAR_STRUCTURAL_DIRECTIVE',` the commonly used directives like `*ngIf` and `*ngFor`, as well as any directives that may alter or add additional elements to the DOM, will be the first to be shown.
 
-Commonly used directives like `*ngIf` and `*ngFor`, as well as any directives that may alter or add additional elements to the DOM.
-
-#### Custom Directives
-
-```JSON
-'^app',
-```
-
-Since the directives also might change presentation is good to have them close to the first items to easily identify that the current HTML is affected by a directive. In our case, we use `app` selector for our directives and that is why we use `'^app'`,
-
-#### Element Ref
-
-```JSON
- '$ANGULAR_ELEMENT_REF',
-```
+Next, we show the specific selector for directives in our application, like `app` with the configuration of `'^app',`
 
 #### Test Ids
 
-```json
- 'data-testid',
-```
-
 This includes any HTML attribute to select HTML elements while executing tests like `data-testid` or `data-cy`
 
-#### HTML Accessibility Attributes
+#### HTML and Angular Accessibility Attributes
 
 ```json
  'tabindex',  
@@ -108,6 +86,7 @@ This includes any HTML attribute to select HTML elements while executing tests l
  '$ARIA',  
  '$ROLE',  
  '$TYPE',
+ '^\\[attr',
 ```
 
 #### Angular Animations
@@ -129,15 +108,7 @@ This would include any attributes that directly affect how the element is styled
 
 After knowing that the element will be in the DOM, the next logical thing is knowing how the element will look on the page. This rule includes any conditional classes added with Angular data binding syntax like `[class.some-class]="true"`, which is just an alternative to `ngClass` and `ngStyle`.
 
-#### Angular Accessibility Attributes
-
-```json
- '^\\[attr',
-```
-
-Anything that can be modified with Angular using `[aria.`
-
-#### Angular Inputs and outputs
+#### Inputs, outputs and DOM Events handlers
 
 ```json
  '$ANGULAR_TWO_WAY_BINDING',  
@@ -153,9 +124,7 @@ Anything that can be modified with Angular using `[aria.`
 
 This includes standard element attributes, inputs, outputs, and DOM event handlers.
 
-This configuration makes sure that all the DOM Event handlers are grouped in a logical way to make it easier to find counterparts, like, for example, `(copy)`, `(cut)` and `(paste)` will be close together regardless of which other outputs exist.
-
-#### DOM Event Handlers
+This configuration makes sure that all the DOM Event handlers are grouped logically to make it easier to find counterparts, like, for example, `(copy)`, `(cut)` and `(paste)` will be close together regardless of which other outputs exist.
 
 Finally, include any DOM event handlers, such as `(mouseenter)`, `(copy)`, `(keyup)`, etc.
 
@@ -163,6 +132,6 @@ Finally, include any DOM event handlers, such as `(mouseenter)`, `(copy)`, `(key
 
 Now, let's see how this will work if, instead of relying on code reviews, we change it to use the library `prettier-plugin-organize-attributes`
 
-Let's give it a try in this component that has way to many attributes but that can help us see how the plugin works when the HTML element has a lot of different attribute types
+Let's give it a try in this component that has way too many attributes but that can help us see how the plugin works when the HTML element has a lot of different attribute types
 
 %[https://snappify.com/view/0e7dd090-f28c-41ec-b0f7-881e293ce30e]
