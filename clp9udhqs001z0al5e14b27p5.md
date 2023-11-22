@@ -12,8 +12,6 @@ tags: webdesign, web-development, angular, web-animation, angular17
 
 ---
 
-![](https://cdn.hashnode.com/res/hashnode/image/upload/v1700519671858/63661c0c-a94f-4c1a-b421-d48541b054cc.png align="center")
-
 🚀 La versión 17 de Angular está a la vuelta de la esquina e incluirá algo que está causando sensación en el mundo del desarrollo web: el soporte para [View Transitions API.](https://developer.chrome.com/docs/web-platform/view-transitions/)
 
 Las View Transitions API hacen que sea muy sencillo añadir animaciones llamativas y transiciones suaves cuando estás construyendo aplicaciones web. Puedes crear efectos llamativos con solo un poco de código, lo que hace que tu aplicación sea más atractiva para los usuarios.
