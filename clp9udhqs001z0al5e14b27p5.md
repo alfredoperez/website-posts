@@ -1,8 +1,11 @@
 ---
 title: "View Transitions API en Angular 17"
-datePublished: Wed Nov 22 2023 14:10:18 GMT+0000 (Coordinated Universal Time)
+seoTitle: "Angular 17 Transitions API Overview"
+seoDescription: "Aprende a crear animaciones suaves en Angular 17 con View Transitions API para mejorar experiencia de usuario y estética de tu aplicación web"
+datePublished: Tue Oct 31 2023 23:00:00 GMT+0000 (Coordinated Universal Time)
 cuid: clp9udhqs001z0al5e14b27p5
 slug: view-transitions-api-en-angular-17
+canonical: https://medium.com/ngconf/view-transitions-api-en-angular-17-99dea9ef35e2
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1700663574752/5bd03c56-ad34-4018-a5a5-a311827ce930.png
 ogImage: https://cdn.hashnode.com/res/hashnode/image/upload/v1700662196078/875964e8-dd8c-406a-87ed-17302b1ace05.png
 tags: webdesign, web-development, angular, web-animation, angular17
