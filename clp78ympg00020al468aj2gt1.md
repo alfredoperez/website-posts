@@ -5,6 +5,7 @@ seoDescription: "Explore Angular 17's View Transitions API for seamless animatio
 datePublished: Mon Nov 20 2023 18:35:20 GMT+0000 (Coordinated Universal Time)
 cuid: clp78ympg00020al468aj2gt1
 slug: view-transitions-api-in-angular-17
+canonical: https://medium.com/ngconf/view-transitions-api-en-angular-17-99dea9ef35e2
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1700663936008/add2f2f3-ed0e-4562-ba11-b093f4bff38a.png
 ogImage: https://cdn.hashnode.com/res/hashnode/image/upload/v1700505269820/b0b0a29f-7ba2-4637-866b-4a3bdc77e2e7.png
 tags: web-design, web-development, angular, web-animation, angular17
