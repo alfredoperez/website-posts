@@ -1,6 +1,7 @@
 ---
 title: "View Transitions API in Angular 17"
-seoDescription: "Discover Angular 17's View Transitions API for smooth animations, better UX, and increased app performance. Upgrade web apps with ease"
+seoTitle: "Angular 17 View Transitions API Overview"
+seoDescription: "Explore Angular 17's View Transitions API for seamless animations, better UX, and simple web app integration. Boost engagement with ease"
 datePublished: Mon Nov 20 2023 18:35:20 GMT+0000 (Coordinated Universal Time)
 cuid: clp78ympg00020al468aj2gt1
 slug: view-transitions-api-in-angular-17
@@ -9,8 +10,6 @@ ogImage: https://cdn.hashnode.com/res/hashnode/image/upload/v1700505269820/b0b0a
 tags: web-design, web-development, angular, web-animation, angular17
 
 ---
-
-![](https://miro.medium.com/v2/resize:fit:770/1*le0L2YwsyNDeYgKNrfxyhA.png align="left")
 
 🚀 Version 17 of Angular is just around the corner, and it will include something that is making waves in the web development world: support for the [View Transitions API.](https://developer.chrome.com/docs/web-platform/view-transitions/)
 
