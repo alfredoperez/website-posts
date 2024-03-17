@@ -5,13 +5,12 @@ datePublished: Thu Jan 04 2024 06:00:00 GMT+0000 (Coordinated Universal Time)
 cuid: cltvkhgnv00070ajy6o9adpsm
 slug: taming-http-requests-with-an-abstract-api-service
 canonical: https://medium.com/ngconf/taming-http-requests-with-an-abstract-api-service-61e73f39ed75
+cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1710683244188/1b4c6d93-f5b1-4cd6-9095-234d3a280165.webp
 tags: angularjs, web-development, typescript, repository-pattern, domain-driven-design
 
 ---
 
 ---
-
-![](https://cdn-images-1.medium.com/max/2400/1*62YHWMCnhrSzYhIN91yYLQ.jpeg align="left")
 
 Some time ago, there was a need to have multiple remote controllers in your living room because you had multiple devices on it, like the TV or stereo system, and so on, making it a hassle to manage all of them and to find the correct one when you needed it. As a solution for this, the universal control was invented with the purpose of having a single control for all your devices, and you could even configure it to handle multiple TVs.
 
