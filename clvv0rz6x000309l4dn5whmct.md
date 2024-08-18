@@ -5,7 +5,6 @@ seoDescription: "Explore how TanStack Query enhances Angular apps by efficiently
 datePublished: Mon May 06 2024 13:50:55 GMT+0000 (Coordinated Universal Time)
 cuid: clvv0rz6x000309l4dn5whmct
 slug: tanstack-query-in-angular
-canonical: https://medium.com/ngconf/tanstack-query-in-angular-5520dab44882
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1715002363680/4e0dd37e-c507-4222-8737-acc27c0ddfec.jpeg
 tags: javascript, angularjs, web-development, state-management, tanstack-query
 
