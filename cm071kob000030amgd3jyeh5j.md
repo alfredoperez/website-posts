@@ -56,19 +56,10 @@ In order to run a test, the first thing that you need to configure is the TS Con
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/spec",
-    "types": [
-      "jest",
-      "node"
-    ]
+    "module": "CommonJs",
+    "types": ["jest"]
   },
-  "files": [
-    "src/polyfills.ts"
-  ],
-  "include": [
-    "src/**/*.spec.ts",
-    "src/**/*.mocks.ts",
-    "src/**/*.d.ts"
-  ]
+  "include": ["src/**/*.spec.ts", "src/**/*.d.ts"]
 }
 ```
 
@@ -81,16 +72,10 @@ import "jest-preset-angular/setup-jest";
 Now, create the `jest.config.js` and add the following:
 
 ```js
-const { pathsToModuleNameMapper } = require('ts-jest');
-const { paths } = require('./tsconfig.json').compilerOptions;
-
-/** @type {import('ts-jest/dist/types').JestConfigWithTsJest} */
 module.exports = {
-	preset: 'jest-preset-angular',
-	moduleNameMapper: pathsToModuleNameMapper(paths, 
-                { prefix: '<rootDir>' }
-    ),
-	setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
+    preset: 'jest-preset-angular',
+    setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
+    globalSetup: 'jest-preset-angular/global-setup',
 };
 ```
 
