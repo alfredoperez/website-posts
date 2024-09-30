@@ -16,7 +16,7 @@ It's safe to say that AI is everywhere these days, especially with all the codin
 
 [JetBrains AI Assistant](https://www.jetbrains.com/ai/) is an integrated artificial intelligence feature within JetBrains' suite of IDEs, such as IntelliJ IDEA, PyCharm, and WebStorm. It provides various functionalities to enhance the coding experience, including:
 
-1. **Code Completion**: offers intelligent code suggestions and autocompletion to speed up coding and reduce errors.
+1. **Code Completion**: Offers intelligent code suggestions and autocompletion to speed up coding and reduce errors.
     
 2. **Documentation Generation**: Automatically generates documentation for classes and methods based on the code context.
     
@@ -88,9 +88,9 @@ Thanks to all this, I was able to generate the service, and now whenever I hover
 
 ## Creating tests
 
-Adding documentation was easy enough and can be done with any AI tool. However, we discovered the Prompt library and that JetBrains AI tool is context-aware. Moving on to my next task, I needed to add some unit tests. To my surprise, there is also a prompt to generate unit tests. This time, I decided to modify the prompt to specify how I want the test structure and which testing tools I use.
+Adding documentation is straightforward and can be accomplished with any AI tool; the Prompt library and JetBrains AI tool prove to be context-aware. 
 
-Here is how the prompt ended up:
+Moving on to the next task, adding unit tests becomes essential, and to everyone’s surprise, there is also a prompt available to generate them. This time, I also customized the prompt to specify the desired test structure and the testing tools in use. Here’s how the prompt ended up:
 
 ```markdown
 - Try to avoid brackets in arrow functions
