@@ -12,7 +12,7 @@ What if your editor could help enforce these standards as your team codes? Enter
 
 ## What Are Cursor Rules?
 
-Cursor Rules are persistent, reusable instructions that guide Cursor's AI as it assists with your code. Think of them as "system prompts" active across your interactions, ensuring the AI consistently adheres to your team's standards and best practices.
+[Cursor Rules](https://docs.cursor.com/context/rules) are persistent, reusable instructions that guide Cursor's AI as it assists with your code. Think of them as "system prompts" active across your interactions, ensuring the AI consistently adheres to your team's standards and best practices.
 
 For Angular developers, rules are particularly effective because the framework itself has many established opinions and patterns:
 
@@ -20,7 +20,11 @@ For Angular developers, rules are particularly effective because the framework i
     
 * Naming conventions
     
-* Reactive patterns with RxJS
+* Reactivity patterns
+    
+* Forms
+    
+* Tables
     
 * Use of signals vs observables
     
@@ -48,9 +52,10 @@ alwaysApply: true
 
 - Rule
 - Rule
-<example type="valid">
 
+<example type="valid">
 </example>
+
 <example type="invalid">
 
 </example>
@@ -60,11 +65,9 @@ alwaysApply: true
 
 This basic structure places metadata at the top—configuring where and when rules apply—followed by the rules themselves, with examples if necessary.
 
-<mark>TODO: Get the definition and link from cursor about the metadata</mark>
-
 ## Rule Types
 
-By working with the three metadata options (`description`, `globs`, and `alwaysApply`), we can organize Cursor rules into four distinct types.
+By working with the three metadata options (`description`, `globs`, and `alwaysApply`), we can organize Cursor rules into four [distinct types](https://docs.cursor.com/context/rules#rule-type).
 
 Next, I'll describe each type, its setup, and a suggested suffix for easy identification:
 
@@ -206,7 +209,7 @@ alwaysApply: true
 ---
 ```
 
-For this type of file you can use the suffix of `always`, e.g. `.cursor/rules/angular-always.mdc`
+For this type of file you can use the suffix of `always`, e.g. `.cursor/rules/angular-always.mdc`. *Always Rules* are particularly useful for enforcing core Angular practices across your project, such as consistent use of standalone components, proper dependency injection patterns, OnPush change detection strategy, and standardized error handling in HTTP interceptors.
 
 ```md
 ---
@@ -271,54 +274,79 @@ These conventions apply to all Angular code in this project:
 
 **Agent Requested Rules**
 
-These are context-specific rules that the AI can intelligently pull in based on task relevance. The `description` field must provide comprehensive context about when to apply the rule, while `globs` should be left blank and `alwaysApply` should be false. These are perfect for specialized Angular patterns that only apply in certain contexts, like state management, API integration, or NgRx setup.
+These are context-specific rules that the AI can intelligently pull in based on task relevance. The `description`field must provide comprehensive context about when to apply the rule, while `globs` should be left blank and `alwaysApply` should be false.
 
-```md
+```markdown
 ---
-description: "Guidelines for implementing state management in Angular services using RxJS"
-alwaysApply: false
+description: "Guidelines for implementing modern Angular patterns using signals and defer blocks"
 ---
 ```
 
-For this type, use the suffix `-agent.mdc`, e.g. `.cursor/rules/rxjs-state-agent.mdc`
+For this type, use the suffix `-agent.mdc`, e.g. `.cursor/rules/rxjs-state-agent.mdc` .
+
+Agent Requested Rules are perfect for specialized Angular patterns that only apply in certain contexts, such as implementing NgRx selectors, setting up complex RxJS operator chains, configuring route guards, or implementing custom form validators.
 
 ```md
 ---
-description: "Guidelines for implementing state management in Angular services using RxJS"
+description: "Guidelines for implementing modern Angular patterns using signals and defer blocks"
+alwaysApply: false
 ---
+# Modern Component with Signals and Defer
 
-# RxJS State Management in Services
+## Core Rules
+1. Use signals for all component state
+2. Implement computed values for derived state
+3. Use @defer for lazy loading heavy components
+4. Leverage new control flow syntax (@if, @for)
+5. Keep components standalone by default
 
-For services that manage state:
-
-1. Use BehaviorSubject for internal state
-2. Expose readonly Observables via public getters
-3. Provide methods to update state
-4. Document selector functions
-
-## Example Implementation:
+## Best Practices
+1. Use inject() for dependency injection
+2. Implement proper cleanup in effects
+3. Use proper typing for signals
+4. Keep components focused and small
+5. Use proper error boundaries
 
 <example>
-@Injectable({
-  providedIn: 'root'
+@Component({
+  selector: 'app-user-list',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+    @if (loading()) {
+      <div>Loading...</div>
+    } @else {
+      <div class="user-list">
+        @for (user of users(); track user.id) {
+          <div class="user-card">
+            <h3>{{ user.name }}</h3>
+            <p>{{ user.email }}</p>
+          </div>
+        } @empty {
+          <p>No users found</p>
+        }
+      </div>
+    }
+
+    @defer (on viewport) {
+      <app-user-stats [users]="users()" />
+    } @loading {
+      <div>Loading stats...</div>
+    }
+  `
 })
-export class UserStateService {
-  // Private state
-  private readonly _users = new BehaviorSubject<User[]>([]);
+export class UserListComponent {
+  private readonly userService = inject(UserService);
 
-  // Public selectors
-  readonly users$ = this._users.asObservable();
-  readonly userCount$ = this.users$.pipe(
-    map(users => users.length)
+  // State with signals
+  loading = signal(false);
+  users = signal<User[]>([]);
+
+  // Computed values
+  userCount = computed(() => this.users().length);
+  activeUsers = computed(() =>
+    this.users().filter(user => user.status === 'active')
   );
-
-  // Action methods
-  addUser(user: User): void {
-    const currentUsers = this._users.getValue();
-    this._users.next([...currentUsers, user]);
-  }
-
-  // More methods...
 }
 </example>
 ```
@@ -336,54 +364,271 @@ alwaysApply: false # Explicitly set to false or omit
 
 For this type, use the suffix `-manual.mdc`, e.g., `.cursor/rules/i18n-setup-manual.mdc`.
 
-Notice how AI-generated code, when guided by rules, perfectly aligns with our project standards:
+This approach is ideal for specific patterns in less common tasks, like implementing custom form validators with signals, setting up complex animations with the new animation API, or creating custom structural directives with modern Angular features.
 
-* Employs OnPush change detection
+````markdown
+```md
+---
+---
+# Custom Form Validator with Signals
+## Core Rules
+1. Use signals for reactive form validation
+2. Implement computed values for error messages
+3. Use proper typing for form controls
+4. Keep validation logic in separate methods
+
+## Best Practices
+1. Use inject() for dependency injection
+2. Implement proper form cleanup
+3. Use proper typing for validators
+4. Keep validation rules focused and small
+
+
+<example>
+@Component({
+  selector: 'app-password-form',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
+  template: `
+    <form [formGroup]="form">
+      <input
+        type="password"
+        formControlName="password"
+        [class.error]="passwordError()"
+      />
+      @if (passwordError()) {
+        <div class="error-message">
+          {{ passwordError() }}
+        </div>
+      }
+    </form>
+  `
+})
+export class PasswordFormComponent {
+  private readonly fb = inject(FormBuilder);
+
+  form = this.fb.group({
+    password: ['', [Validators.required, this.passwordStrengthValidator()]]
+  });
+
+  passwordError = computed(() => {
+    const control = this.form.get('password');
+    if (!control?.touched) return null;
+    return control.errors?.['passwordStrength']?.message;
+  });
+
+  private passwordStrengthValidator(): ValidatorFn {
+    return (control: AbstractControl) => {
+      const value = control.value;
+      if (!value) return null;
+
+      const hasUpperCase = /[A-Z]/.test(value);
+      const hasLowerCase = /[a-z]/.test(value);
+      const hasNumber = /[0-9]/.test(value);
+
+      if (!hasUpperCase || !hasLowerCase || !hasNumber) {
+        return {
+          passwordStrength: {
+            message: 'Password must contain uppercase, lowercase, and numbers'
+          }
+        };
+      }
+      return null;
+    };
+  }
+}
+</example>
+```
+````
+
+## Example
+
+Let's see how AI generates a component both with and without rules. First, here's a basic component without rules:
+
+```typescript
+@Component({
+  selector: 'app-users',
+  templateUrl: './users.component.html',
+  styleUrls: ['./users.component.scss']
+})
+export class UsersComponent implements OnInit {
+  @Input() title: string = 'Users';
+  @Output() userAdded = new EventEmitter<User>();
+
+  public users: User[] = [];
+  public loading = false;
+  private userService: UserService;
+
+  constructor(userService: UserService) {
+    this.userService = userService;
+  }
+
+  ngOnInit() {
+    this.loadUsers();
+  }
+
+  loadUsers() {
+    this.loading = true;
+    this.userService.getUsers().subscribe({
+      next: (users) => {
+        this.users = users;
+        this.loading = false;
+      },
+      error: (error) => {
+        console.error('Error loading users:', error);
+        this.loading = false;
+      }
+    });
+  }
+
+  addUser() {
+    // Add user logic
+    this.userAdded.emit(newUser);
+  }
+}
+```
+
+Now, here's the same component following our rules:
+
+```typescript
+@Component({
+  selector: 'app-users',
+  standalone: true,
+  imports: [CommonModule, MatTableModule, MatButtonModule],
+  template: `
+    <div class="users-container">
+      <h2>{{ title() }}</h2>
+
+      @if (loading()) {
+        <div>Loading...</div>
+      } @else {
+        <table mat-table [dataSource]="users()">
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let user">{{ user.name }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let user">{{ user.email }}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+        <button mat-raised-button color="primary" (click)="onAddUser()">
+          Add User
+        </button>
+      }
+    </div>
+  `
+})
+export class UsersComponent {
+  // 1. Injected services
+  private readonly userService = inject(UserService);
+  private readonly cdr = inject(ChangeDetectorRef);
+
+  // 2. Inputs
+  title = input<string>('Users');
+
+  // 3. Outputs
+  userAdded = output<User>();
+
+  // 4. Signals
+  loading = signal(false);
+  users = signal<User[]>([]);
+
+  // 5. Other properties
+  displayedColumns = ['name', 'email'];
+
+  // Computed values
+  userCount = computed(() => this.users().length);
+
+  constructor() {
+    // Effect for data loading
+    effect(() => {
+      this.loading.set(true);
+      this.userService.getUsers().subscribe({
+        next: (users) => {
+          this.users.set(users);
+          this.loading.set(false);
+        },
+        error: (error) => {
+          console.error('Error loading users:', error);
+          this.loading.set(false);
+        }
+      });
+    });
+  }
+
+  // 1. Public methods
+  onAddUser(): void {
+    const newUser = { name: 'New User', email: 'new@example.com' };
+    this.userAdded.emit(newUser);
+  }
+
+  // 2. Protected methods (none in this example)
+
+  // 3. Private methods
+  private updateLoadingState(isLoading: boolean): void {
+    this.loading.set(isLoading);
+  }
+}
+```
+
+The rules-guided version is like upgrading from a basic sedan to a modern sports car. Here's what changed:
+
+1. **Structure & Organization**
     
-* Adheres to proper naming conventions
+    * Everything's in the right place (services → inputs → outputs → signals)
+        
+    * No more scattered properties and methods
+        
+    * Clean, inline template instead of separate files
+        
+2. **Modern Angular Features**
     
-* Implements lifecycle methods correctly
+    * Swapped old decorators for modern `input()`/`output()`
+        
+    * Replaced manual state management with signals
+        
+    * Using the new control flow syntax (`@if`) instead of `*ngIf`
+        
+3. **Performance & Maintainability**
     
-* Manages subscriptions effectively (e.g., with a takeUntil pattern)
-    
-* Uses the correct selector prefix
-    
-* Enforces proper typing
-    
-* Delegates HTTP calls to services
-    
-* Includes loading states and error handling
-    
+    * Signals for better performance
+        
+    * Computed values for derived state
+        
+    * Proper error handling
+        
+    * Material Design integration
+        
+
+The result? Code that's not just cleaner but actually performs better and is easier to maintain.
 
 ## TL;DR;
 
-When to Use Each Type:
+Different rule types in Angular projects can be organized strategically to enhance AI assistance.
 
-| Rule Type | Frequency | Scope | Activation |
-| --- | --- | --- | --- |
-| Auto | High | File-specific | Automatic (file patterns) |
-| Always | Constant | Project-wide | Every AI interaction |
-| Agent | Medium | Context-specific | AI-decided (relevance) |
-| Manual | Low | Specialized tasks | Explicitly requested |
+* "Auto" rules are frequently applied automatically based on specific file patterns, making them perfect for file-specific tasks.
+    
+* "Always" rules are constant and apply across the entire project, triggered during every AI interaction to uphold core principles, naming conventions, and import order.
+    
+* "Agent" rules are used with medium frequency and are context-specific, determined by the AI based on relevance, making them suitable for state management tasks like RxJS/Signals and NgRx setup.
+    
+* "Manual" rules are less common and are used for specialized tasks that require explicit requests, such as migration guides, internationalization (i18n) setup, and complex authentication flows.
+    
 
-Practical Angular Example Strategy: Always: Core principles, naming conventions, import order. Auto: Component structure, service patterns (for `.component.ts`, `.service.ts` files). Agent: State management (RxJS/Signals), NgRx setup. Manual: Migration guides, i18n setup, complex authentication flows. This hierarchy helps ensure the AI isn't overwhelmed with excessive context, while still having the right guidance available when needed.\*\*
+This hierarchy ensures the AI isn't overwhelmed with too much context while still providing the necessary guidance when needed.
 
-## Conclusion
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1749236367630/ff04da39-9f68-47e4-8910-3e122601f968.png align="center")
 
 Implementing custom Cursor rules for your Angular project establishes guardrails that gently guide both your team and the AI toward consistent, high-quality code. By codifying your standards directly within your development environment, you reduce cognitive load, minimize code review debates, and help maintain architectural integrity.
 
-Rules become particularly valuable as your team grows or as you integrate AI more deeply into your workflow. They ensure that no matter who (or what) is writing the code, it adheres to the same consistent patterns.
-
-In the next article, we'll build on this foundation and explore how to create reusable templates with Cursor Notepads, taking your productivity to the next level.
-
-Have you implemented rules in your Angular projects? What standards do you find most important to enforce? Share your experiences in the comments below!
+Rules become particularly valuable as your team grows or as you integrate AI more deeply into your workflow. They ensure that regardless of who (or what) is writing the code, it adheres to the same consistent patterns.
 
 ---
 
-*Looking for more ways to supercharge your Angular development? Check out our full series on Cursor AI for Angular:*
-
-1. **Building Your Angular Guardrails: Creating Custom Cursor Rules for Consistent Code**
-    
-2. *Coming next: Creating Your First Set of Angular Cursor Rules in 10 Minutes*
-    
-3. *Coming next: Reusable Angular Patterns: Mastering Cursor Notepads & Templates*
+In the next article, we'll build on this foundation and explore how to create your first rules for your angular project by providing a custom structure and an easy way to update them.
