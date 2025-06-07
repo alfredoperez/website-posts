@@ -1,10 +1,9 @@
 ---
 title: "Creating Angular Guardrails: A Guide to Custom Cursor Rules for Better Code"
 slug: creating-angular-guardrails-a-guide-to-custom-cursor-rules-for-better-code
+cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1749310255751/1b84dc79-dc3e-48ed-9b38-ca91868fd1bb.jpeg
 
 ---
-
-<mark>Image: Cursor logo with Angular logo and a shield icon representing guardrails/protection</mark>
 
 Ever feel like you're fighting an uphill battle to maintain coding standards across your Angular project? Many of us have. You establish style guides, meticulously review PRs, and hold team meetings—yet, inconsistencies often creep in. Component structures vary, naming conventions drift, and that agreed-upon state management pattern? It can sometimes feel more like a suggestion than a firm rule.
 
@@ -57,7 +56,6 @@ alwaysApply: true
 </example>
 
 <example type="invalid">
-
 </example>
 
 - Rule
@@ -77,7 +75,7 @@ These rules are automatically applied based on the file patterns you're working 
 
 For the metadata, only the `globs` need to be configured, enabling Cursor to identify which files are being modified and apply the rules automatically.
 
-```yaml
+```markdown
 ---
 description: # Optional: A brief note about the rule's purpose
 globs: ["*.component.ts", "src/app/components/**/*.ts"]
@@ -89,8 +87,7 @@ For this type of rule, use the suffix `auto`, e.g., `.cursor/rules/angular-compo
 
 An example of an Auto Rule for Angular components is shown below, enforcing standards whenever working on such files:
 
-````yaml
-
+````markdown
 ---
 globs: ["*.component.ts", "src/app/components/**/*.ts"]
 ---
@@ -367,7 +364,6 @@ For this type, use the suffix `-manual.mdc`, e.g., `.cursor/rules/i18n-setup-man
 This approach is ideal for specific patterns in less common tasks, like implementing custom form validators with signals, setting up complex animations with the new animation API, or creating custom structural directives with modern Angular features.
 
 ````markdown
-```md
 ---
 ---
 # Custom Form Validator with Signals
@@ -577,36 +573,9 @@ export class UsersComponent {
 }
 ```
 
-The rules-guided version is like upgrading from a basic sedan to a modern sports car. Here's what changed:
+The result? The code doesn't just look cleaner—it actually runs better and becomes far easier to maintain over time. But here's the real win: once you've established these rules, every component you build or refactor automatically follows the same patterns. No more style debates, no more inconsistent architectures across your team.
 
-1. **Structure & Organization**
-    
-    * Everything's in the right place (services → inputs → outputs → signals)
-        
-    * No more scattered properties and methods
-        
-    * Clean, inline template instead of separate files
-        
-2. **Modern Angular Features**
-    
-    * Swapped old decorators for modern `input()`/`output()`
-        
-    * Replaced manual state management with signals
-        
-    * Using the new control flow syntax (`@if`) instead of `*ngIf`
-        
-3. **Performance & Maintainability**
-    
-    * Signals for better performance
-        
-    * Computed values for derived state
-        
-    * Proper error handling
-        
-    * Material Design integration
-        
-
-The result? Code that's not just cleaner but actually performs better and is easier to maintain.
+Of course, there's a learning curve. The system will occasionally drop in unnecessary comments or make decisions that feel off. In the next few articles, we'll dive into fine-tuning these rules and building safeguards to catch problematic output before it becomes a headache
 
 ## TL;DR;
 
