@@ -1,5 +1,7 @@
 ---
 title: "Generating Your First Rules with Cursor for Your Angular Project"
+seoTitle: "Generate Cursor Rules for Angular Projects"
+seoDescription: "Learn to create meta-rules that generate consistent Cursor AI rules for Angular using best practices and package.json dependencies"
 datePublished: Sat Dec 27 2025 21:58:32 GMT+0000 (Coordinated Universal Time)
 cuid: cmjoue6jo000002leabbj9ovq
 slug: generating-first-rules-with-cursor-angular
