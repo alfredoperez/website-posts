@@ -2,7 +2,7 @@
 title: "Generating Your First Rules with Cursor for Your Angular Project"
 seoTitle: "Generate Cursor Rules for Angular Projects"
 seoDescription: "Learn to create meta-rules that generate consistent Cursor AI rules for Angular using best practices and package.json dependencies"
-slug: generating-your-first-rules-with-cursor-for-your-angular-project-20a6d013ac9d
+slug: generating-first-rules-with-cursor-angular
 canonical: https://medium.com/ngconf/generating-your-first-rules-with-cursor-for-your-angular-project-20a6d013ac9d
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1766867201075/314f94e0-01e7-42f6-bb5b-d1d6fe928fb7.jpeg
 tags: ai, angular, cursor-ide, vibe-coding, web-development

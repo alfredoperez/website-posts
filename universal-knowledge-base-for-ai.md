@@ -2,7 +2,7 @@
 title: "Universal Knowledge Base for AI"
 seoTitle: "Build a Universal AI Knowledge Base"
 seoDescription: "Create a shared knowledge base for AI tools that documents patterns once and works everywhere - Cursor, Claude Code, or any AI assistant"
-slug: universal-knowledge-base-for-ai-2da5748f396c
+slug: universal-knowledge-base-for-ai
 canonical: https://medium.com/ngconf/universal-knowledge-base-for-ai-2da5748f396c
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1766867173688/6b84b8b5-d449-4ff2-8bcc-9eb04516c98f.jpeg
 tags: ai, angular, claude-code, cursor-ide, documentation, web-development

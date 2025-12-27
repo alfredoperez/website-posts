@@ -2,7 +2,7 @@
 title: "Create Reliable Unit Tests with Claude Code"
 seoTitle: "Create Better Unit Tests with Claude Code"
 seoDescription: "Stop AI from generating useless tests. Create testing guides that teach Claude Code your team's patterns for focused, behavior-driven tests"
-slug: create-reliable-unit-tests-with-claude-code-9147d050d557
+slug: create-reliable-unit-tests-claude-code
 canonical: https://medium.com/ngconf/create-reliable-unit-tests-with-claude-code-9147d050d557
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1766867181426/23969ac4-3db4-4508-b22a-8938799099e7.jpeg
 tags: ai, angular, claude-code, testing, jest, web-development

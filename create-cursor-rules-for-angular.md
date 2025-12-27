@@ -2,8 +2,7 @@
 title: "Create Cursor Rules for Angular"
 seoTitle: "Angular Cursor Customization Guide"
 seoDescription: "Learn how to implement Cursor AI's rules system in Angular to enforce coding standards, maintain consistency, and enhance your team's workflow"
-cuid: cmjot8pne000102jy8ayd4cnb
-slug: creating-angular-guardrails-a-guide-to-custom-cursor-rules-for-better-code-df5523eafb5d
+slug: create-cursor-rules-for-angular
 canonical: https://medium.com/ngconf/creating-angular-guardrails-a-guide-to-custom-cursor-rules-for-better-code-df5523eafb5d
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1766867185585/478a8b75-f034-46b0-9ad5-7057990492e8.jpeg
 tags: ai, angularjs, cursor-ide, vibe-coding
