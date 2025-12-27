@@ -1,5 +1,6 @@
 ---
 title: "Universal Knowledge Base for AI"
+domain: www.alfredo-perez.dev
 seoTitle: "Build a Universal AI Knowledge Base"
 seoDescription: "Create a shared knowledge base for AI tools that documents patterns once and works everywhere - Cursor, Claude Code, or any AI assistant"
 slug: universal-knowledge-base-for-ai
