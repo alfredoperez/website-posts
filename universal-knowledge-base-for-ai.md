@@ -6,7 +6,6 @@ slug: universal-knowledge-base-for-ai-2da5748f396c
 canonical: https://medium.com/ngconf/universal-knowledge-base-for-ai-2da5748f396c
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1766867173688/6b84b8b5-d449-4ff2-8bcc-9eb04516c98f.jpeg
 tags: ai, angular, claude-code, cursor-ide, documentation, web-development
-publishedAt: 2025-10-02
 
 ---
 

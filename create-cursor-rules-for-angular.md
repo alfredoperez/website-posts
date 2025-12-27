@@ -2,7 +2,6 @@
 title: "Create Cursor Rules for Angular"
 seoTitle: "Angular Cursor Customization Guide"
 seoDescription: "Learn how to implement Cursor AI's rules system in Angular to enforce coding standards, maintain consistency, and enhance your team's workflow"
-datePublished: Mon Jun 16 2025 06:00:00 GMT+0000 (Coordinated Universal Time)
 cuid: cmjot8pne000102jy8ayd4cnb
 slug: creating-angular-guardrails-a-guide-to-custom-cursor-rules-for-better-code-df5523eafb5d
 canonical: https://medium.com/ngconf/creating-angular-guardrails-a-guide-to-custom-cursor-rules-for-better-code-df5523eafb5d

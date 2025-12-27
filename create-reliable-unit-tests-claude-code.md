@@ -6,7 +6,6 @@ slug: create-reliable-unit-tests-with-claude-code-9147d050d557
 canonical: https://medium.com/ngconf/create-reliable-unit-tests-with-claude-code-9147d050d557
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1766867181426/23969ac4-3db4-4508-b22a-8938799099e7.jpeg
 tags: ai, angular, claude-code, testing, jest, web-development
-publishedAt: 2025-09-18
 
 ---
 
