@@ -1,5 +1,7 @@
 ---
 title: "Create Cursor Rules for Angular"
+seoTitle: "Angular Cursor Customization Guide"
+seoDescription: "Learn how to implement Cursor AI's rules system in Angular to enforce coding standards, maintain consistency, and enhance your team's workflow"
 datePublished: Sat Dec 27 2025 21:58:35 GMT+0000 (Coordinated Universal Time)
 cuid: cmjoue8pt000302l829xmgsy5
 slug: create-cursor-rules-for-angular
