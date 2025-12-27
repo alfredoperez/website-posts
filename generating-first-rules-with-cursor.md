@@ -1,6 +1,7 @@
 ---
 title: "Generating Your First Rules with Cursor for Your Angular Project"
 domain: www.alfredo-perez.dev
+publishedAt: 2025-06-23
 seoTitle: "Generate Cursor Rules for Angular Projects"
 seoDescription: "Learn to create meta-rules that generate consistent Cursor AI rules for Angular using best practices and package.json dependencies"
 slug: generating-first-rules-with-cursor-angular

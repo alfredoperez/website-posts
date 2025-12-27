@@ -1,6 +1,7 @@
 ---
 title: "Create Cursor Rules for Angular"
 domain: www.alfredo-perez.dev
+publishedAt: 2025-06-16
 seoTitle: "Angular Cursor Customization Guide"
 seoDescription: "Learn how to implement Cursor AI's rules system in Angular to enforce coding standards, maintain consistency, and enhance your team's workflow"
 slug: create-cursor-rules-for-angular

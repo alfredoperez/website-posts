@@ -1,6 +1,7 @@
 ---
 title: "Create Reliable Unit Tests with Claude Code"
 domain: www.alfredo-perez.dev
+publishedAt: 2025-09-18
 seoTitle: "Create Better Unit Tests with Claude Code"
 seoDescription: "Stop AI from generating useless tests. Create testing guides that teach Claude Code your team's patterns for focused, behavior-driven tests"
 slug: create-reliable-unit-tests-claude-code
