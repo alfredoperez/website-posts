@@ -42,9 +42,9 @@ Crucially, these rules also benefit developers directly. They serve as a readabl
 
 ### Understanding the .mdc structure
 
-Cursor stores project-specific rules as Markdown Component files (\`.mdc\`) within a `.cursor/rules`directory at the root of your project. This allows your rules to be version-controlled alongside your codebase — a major asset for team consistency.
+Cursor stores project-specific rules as Markdown Component files (`.mdc`) within a `.cursor/rules` directory at the root of your project. This allows your rules to be version-controlled alongside your codebase — a major asset for team consistency.
 
-Consider the basic structure of an \`.mdc\` rule file:
+Consider the basic structure of an `.mdc` rule file:
 
 ```markdown
 ---
@@ -79,7 +79,7 @@ Next, I’ll describe each type, its setup, and a suggested suffix for easy iden
 
 These rules are automatically applied based on the file patterns you’re working with.
 
-For the metadata, only the \`globs\` needs to be configured, enabling Cursor to identify which files are being modified and apply the rules automatically.
+For the metadata, only the `globs` needs to be configured, enabling Cursor to identify which files are being modified and apply the rules automatically.
 
 ```markdown
 ---
@@ -89,7 +89,7 @@ alwaysApply: false # Default, can be omitted if false
 ---
 ```
 
-For this type of rule, use the suffix`auto`, e.g., `.cursor/rules/angular-component-auto.mdc`.
+For this type of rule, use the suffix `auto`, e.g., `.cursor/rules/angular-component-auto.mdc`.
 
 An example of an Auto Rule for Angular components is shown below, enforcing standards whenever working on such files:
 
@@ -208,7 +208,7 @@ this.loading.set(isLoading);
 
 **Always Rule**
 
-These rules establish foundational guidelines that apply to all AI interactions within your project. Since these are always applied, we don’t need to set the \`globs\` or the \`description fields.
+These rules establish foundational guidelines that apply to all AI interactions within your project. Since these are always applied, we don’t need to set the `globs` or the \`description fields.
 
 ```markdown
 ---
@@ -216,7 +216,7 @@ alwaysApply: true
 ---
 ```
 
-For this type of file, you can use the suffix of`always`, e.g., `.cursor/rules/angular-always.mdc`. **Always Rules** are particularly useful for enforcing core Angular practices across your project, such as consistent use of standalone components, proper dependency injection patterns, `OnPush`change detection strategy, and standardized error handling in HTTP interceptors.
+For this type of file, you can use the suffix of `always`, e.g., `.cursor/rules/angular-always.mdc`. **Always Rules** are particularly useful for enforcing core Angular practices across your project, such as consistent use of standalone components, proper dependency injection patterns, `OnPush` change detection strategy, and standardized error handling in HTTP interceptors.
 
 Here is an example of an Always Rule for Global Angular conventions:
 
@@ -241,7 +241,7 @@ These conventions apply to all Angular code in this project:
 - Services: PascalCase with Service suffix (AuthenticationService)
 - Interfaces: PascalCase with prefix I (IUserProfile) or descriptive name (UserProfile)
 - Enums: PascalCase (UserRole)
-- Constants: UPPER_SNAKE_CASE (API ENDPOINTS)
+- Constants: UPPER_SNAKE_CASE (API_ENDPOINTS)
 
 ## Import Order
 1. Angular core and common modules
@@ -316,32 +316,47 @@ Use proper error boundaries
 
 ```ts
 @Component({
-selector: 'app-user-list', 
-standalone: true, 
-imports: \[CommonModule\], 
-template: \` @if (loading()) { Loading… } @else { @for (user of users(); track user.id) {
- {{ user.name }}
-{{ user.email }}
- } @empty {
-No users found
- } } @defer (on viewport) { } @loading { Loading stats… } \` }) export class UserListComponent { private readonly userService \= inject(UserService);
+  selector: 'app-user-list',
+  standalone: true,
+  imports: [CommonModule],
+  template: `
+    @if (loading()) {
+      Loading…
+    } @else {
+      @for (user of users(); track user.id) {
+        {{ user.name }}
+        {{ user.email }}
+      } @empty {
+        No users found
+      }
+    }
 
-// State with signals
-loading = signal(false);
-users = signal<User[]>([]);
+    @defer (on viewport) {
+      <app-user-stats />
+    } @loading {
+      Loading stats…
+    }
+  `
+})
+export class UserListComponent {
+  private readonly userService = inject(UserService);
 
-// Computed values
-userCount = computed(() => this.users().length);
-activeUsers = computed(() =>
-this.users().filter(user => user.status === 'active')
-);
+  // State with signals
+  loading = signal(false);
+  users = signal<User[]>([]);
 
+  // Computed values
+  userCount = computed(() => this.users().length);
+  activeUsers = computed(() =>
+    this.users().filter(user => user.status === 'active')
+  );
+}
 ```
 ````
 
 **Manual Rules**
 
-These are specialized rules intended for application only when explicitly requested. For this type, the \`description\` and \`globs\` fields should be left blank, and \`alwaysApply\` set to \`false\`. This approach is ideal for specific patterns in less common tasks, like internationalization setup or complex authentication flows.
+These are specialized rules intended for application only when explicitly requested. For this type, the `description` and `globs` fields should be left blank, and `alwaysApply` set to `false`. This approach is ideal for specific patterns in less common tasks, like internationalization setup or complex authentication flows.
 
 ```markdown
 ---
@@ -350,7 +365,7 @@ alwaysApply: false # Explicitly set to false or omit
 ---
 ```
 
-For this type, use the suffix \`-manual.mdc\`, e.g., \`.cursor/rules/i18n-setup-manual.mdc\`.
+For this type, use the suffix `-manual.mdc`, e.g., `.cursor/rules/i18n-setup-manual.mdc`.
 
 This approach is ideal for specific patterns in less common tasks, like implementing custom form validators with signals, setting up complex animations with the new animation API, or creating custom structural directives with modern Angular features.
 
@@ -374,40 +389,50 @@ Use proper typing for validators
 Keep validation rules focused and small
 
 ```ts
- @Component({ selector: 'app-password-form', standalone: true, imports: \[CommonModule, ReactiveFormsModule\], template: \` @if (passwordError()) { {{ passwordError() }} } \` }) export class PasswordFormComponent {
+@Component({
+  selector: 'app-password-form',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
+  template: `
+    @if (passwordError()) {
+      {{ passwordError() }}
+    }
+  `
+})
+export class PasswordFormComponent {
+  private readonly fb = inject(FormBuilder);
 
-private readonly fb = inject(FormBuilder);
+  form = this.fb.group({
+    password: ['', [Validators.required, this.passwordStrengthValidator()]]
+  });
 
-form = this.fb.group({
-password: ['', [Validators.required, this.passwordStrengthValidator()]]
-});
+  passwordError = computed(() => {
+    const control = this.form.get('password');
+    if (!control?.touched) return null;
 
-passwordError = computed(() => {
-const control = this.form.get('password');
-if (!control?.touched) return null;
+    return control.errors?.['passwordStrength']?.message;
+  });
 
-return control.errors?.['passwordStrength']?.message;
-});
+  private passwordStrengthValidator(): ValidatorFn {
+    return (control: AbstractControl) => {
+      const value = control.value;
+      if (!value) return null;
 
-private passwordStrengthValidator(): ValidatorFn {
-return (control: AbstractControl) => {
-const value = control.value;
-if (!value) return null;
-
-const hasUpperCase = /[A-Z]/.test(value);
-const hasLowerCase = /[a-z]/.test(value);
-const hasNumber = /[0–9]/.test(value);
-if (!hasUpperCase || !hasLowerCase || !hasNumber) {
-return {
-passwordStrength: {
-message: 'Password must contain uppercase, lowercase, and numbers'
+      const hasUpperCase = /[A-Z]/.test(value);
+      const hasLowerCase = /[a-z]/.test(value);
+      const hasNumber = /[0-9]/.test(value);
+      if (!hasUpperCase || !hasLowerCase || !hasNumber) {
+        return {
+          passwordStrength: {
+            message: 'Password must contain uppercase, lowercase, and numbers'
+          }
+        };
+      }
+      return null;
+    };
+  }
 }
-};
-}
-return null;
-};
-}
-}
+```
 ````
 
 ### Lets see it in action
